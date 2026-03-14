@@ -25,7 +25,7 @@ Alguns casos de uso comuns do Amazon Personalize são:
 
 ## Exemplo prático
 
-Neste exemplo, iremos criar um sistema de recomendação de filmes. Para isso, utilizaremos alguns dados de usuários que avaliaram filmes. Os filmes serão os nossos **itens**, e as avaliações feitas pelos usuários serão as nossas **interações**.
+Neste exemplo, iremos configurar recomendações de filmes no ambiente da AWS. Para isso, utilizaremos alguns dados de usuários que avaliaram filmes. Os filmes serão os nossos **itens**, e as avaliações feitas pelos usuários serão as nossas **interações**.
 
 ### 01 - Visualizando o dataset de interações
 
