@@ -1,0 +1,31 @@
+import json
+import boto3
+
+def lambda_handler(event, context):
+    rekognition = boto3.client('rekognition')
+    s3_bucket = event.get('s3_bucket', 'your-s3-bucket-name')
+    s3_key = event.get('s3_key', 'path/to/your/image.jpg')
+
+    response = rekognition.detect_labels(
+        Image={
+            'S3Object': {
+                'Bucket': s3_bucket,
+                'Name': s3_key
+            }
+        },
+        MaxLabels=10,
+        MinConfidence=75
+    )
+
+    labels = [
+        {'Name': label['Name'], 'Confidence': label['Confidence']}
+        for label in response['Labels']
+    ]
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps({
+            'image': s3_key,
+            'labels': labels
+        }, indent=4)
+    }
